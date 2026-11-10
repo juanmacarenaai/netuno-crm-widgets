@@ -1,0 +1,1700 @@
+{
+  "message": "Consulta de NAP a Weezie exitosa",
+  "code": 0,
+  "data": {
+    "estimated_client_connection": {
+      "anz_id": 125,
+      "anz_label": "PTGCNTYYYY3A / 03A (Zona PON Construida)",
+      "anz_comment": null,
+      "anz_loc_code": null,
+      "anz_type": "macpl",
+      "closures": [
+        {
+          "id": 2023,
+          "label": "PTGCNT-03A-A",
+          "closure_uuid": "87379a75-a8b2-4461-babf-2f2c4305fd7c",
+          "free_port": 1,
+          "available_ports": 8,
+          "occupied_ports": 0,
+          "distance": 43.67349718,
+          "coordinates": {
+            "lat": 9.042161930000823,
+            "lon": -69.75532540688174
+          }
+        },
+        {
+          "id": 2043,
+          "label": "PTGCNT-03A-X",
+          "closure_uuid": "7a4f0c85-21a6-4b38-a570-df0ecfaff64b",
+          "free_port": 7,
+          "available_ports": 2,
+          "occupied_ports": 6,
+          "distance": 50.89560813,
+          "coordinates": {
+            "lat": 9.042717964586808,
+            "lon": -69.75525773259615
+          }
+        }
+      ],
+      "mdus": [
+        {
+          "mdu_id": 18158,
+          "mdu_uuid": "a145d19c-deeb-4af6-a3a2-7705dd8b1a2f",
+          "coordinates": {
+            "lat": 9.042575604442256,
+            "lon": -69.75557790647225
+          },
+          "mdu_plant": {
+            "building_id": 18158,
+            "building_uuid": "a145d19c-deeb-4af6-a3a2-7705dd8b1a2f",
+            "building_label": "RES. (C) TERCERO",
+            "bd_demand_point_address": null,
+            "bd_adduction_other_hazards": null,
+            "bd_adduction_progress": "E",
+            "bd_adduction_type": "0",
+            "bd_adduction_hazards": null,
+            "coordinates": {
+              "lat": 9.042575604442256,
+              "lon": -69.75557790647225
+            },
+            "columns": [
+              {
+                "column_id": 226,
+                "column_index": 1
+              }
+            ],
+            "floors": [
+              {
+                "floor_id": 1309,
+                "floor_level": "1",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4930,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4931,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4932,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4933,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4934,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1308,
+                "floor_level": "2",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2037,
+                    "fbox_label": "PTGCNT-03A-C",
+                    "fbx_active": true,
+                    "cl_id": 2037,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4925,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4926,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4927,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4928,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4929,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1307,
+                "floor_level": "3",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4920,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4921,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4922,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4923,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4924,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1306,
+                "floor_level": "4",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2038,
+                    "fbox_label": "PTGCNT-03A-D",
+                    "fbx_active": true,
+                    "cl_id": 2038,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4915,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4916,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4917,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4918,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4919,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1305,
+                "floor_level": "5",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4910,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4911,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4912,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4913,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4914,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1304,
+                "floor_level": "6",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2040,
+                    "fbox_label": "PTGCNT-03A-E",
+                    "fbx_active": true,
+                    "cl_id": 2040,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4905,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4906,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4907,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4908,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4909,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1303,
+                "floor_level": "7",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4900,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4901,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4902,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4903,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4904,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1302,
+                "floor_level": "8",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2041,
+                    "fbox_label": "PTGCNT-03A-F",
+                    "fbx_active": true,
+                    "cl_id": 2041,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4895,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4896,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4897,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4898,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4899,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1310,
+                "floor_level": "P.B.",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2036,
+                    "fbox_label": "PTGCNT-03A-B",
+                    "fbx_active": true,
+                    "cl_id": 2036,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4935,
+                    "fraction_label": "L1"
+                  },
+                  {
+                    "fraction_id": 4936,
+                    "fraction_label": "L2"
+                  },
+                  {
+                    "fraction_id": 4937,
+                    "fraction_label": "L3"
+                  },
+                  {
+                    "fraction_id": 4938,
+                    "fraction_label": "L4"
+                  },
+                  {
+                    "fraction_id": 4939,
+                    "fraction_label": "L5"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "same_area": {
+      "macpl": [
+        {
+          "anz_id": 125,
+          "anz_label": "PTGCNTYYYY3A / 03A (Zona PON Construida)",
+          "anz_comment": null,
+          "anz_loc_code": null,
+          "anz_type": "macpl",
+          "closures": [
+            {
+              "id": 2023,
+              "label": "PTGCNT-03A-A",
+              "closure_uuid": "87379a75-a8b2-4461-babf-2f2c4305fd7c",
+              "free_port": 1,
+              "available_ports": 8,
+              "occupied_ports": 0,
+              "distance": 43.67349718,
+              "coordinates": {
+                "lat": 9.042161930000823,
+                "lon": -69.75532540688174
+              }
+            },
+            {
+              "id": 2043,
+              "label": "PTGCNT-03A-X",
+              "closure_uuid": "7a4f0c85-21a6-4b38-a570-df0ecfaff64b",
+              "free_port": 7,
+              "available_ports": 2,
+              "occupied_ports": 6,
+              "distance": 50.89560813,
+              "coordinates": {
+                "lat": 9.042717964586808,
+                "lon": -69.75525773259615
+              }
+            }
+          ],
+          "mdus": [
+            {
+              "mdu_id": 18158,
+              "mdu_uuid": "a145d19c-deeb-4af6-a3a2-7705dd8b1a2f",
+              "coordinates": {
+                "lat": 9.042575604442256,
+                "lon": -69.75557790647225
+              },
+              "mdu_plant": {
+                "building_id": 18158,
+                "building_uuid": "a145d19c-deeb-4af6-a3a2-7705dd8b1a2f",
+                "building_label": "RES. (C) TERCERO",
+                "bd_demand_point_address": null,
+                "bd_adduction_other_hazards": null,
+                "bd_adduction_progress": "E",
+                "bd_adduction_type": "0",
+                "bd_adduction_hazards": null,
+                "coordinates": {
+                  "lat": 9.042575604442256,
+                  "lon": -69.75557790647225
+                },
+                "columns": [
+                  {
+                    "column_id": 226,
+                    "column_index": 1
+                  }
+                ],
+                "floors": [
+                  {
+                    "floor_id": 1309,
+                    "floor_level": "1",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4930,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4931,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4932,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4933,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4934,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1308,
+                    "floor_level": "2",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2037,
+                        "fbox_label": "PTGCNT-03A-C",
+                        "fbx_active": true,
+                        "cl_id": 2037,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4925,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4926,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4927,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4928,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4929,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1307,
+                    "floor_level": "3",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4920,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4921,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4922,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4923,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4924,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1306,
+                    "floor_level": "4",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2038,
+                        "fbox_label": "PTGCNT-03A-D",
+                        "fbx_active": true,
+                        "cl_id": 2038,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4915,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4916,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4917,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4918,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4919,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1305,
+                    "floor_level": "5",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4910,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4911,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4912,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4913,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4914,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1304,
+                    "floor_level": "6",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2040,
+                        "fbox_label": "PTGCNT-03A-E",
+                        "fbx_active": true,
+                        "cl_id": 2040,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4905,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4906,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4907,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4908,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4909,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1303,
+                    "floor_level": "7",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4900,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4901,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4902,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4903,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4904,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1302,
+                    "floor_level": "8",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2041,
+                        "fbox_label": "PTGCNT-03A-F",
+                        "fbx_active": true,
+                        "cl_id": 2041,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4895,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4896,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4897,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4898,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4899,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1310,
+                    "floor_level": "P.B.",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2036,
+                        "fbox_label": "PTGCNT-03A-B",
+                        "fbx_active": true,
+                        "cl_id": 2036,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4935,
+                        "fraction_label": "L1"
+                      },
+                      {
+                        "fraction_id": 4936,
+                        "fraction_label": "L2"
+                      },
+                      {
+                        "fraction_id": 4937,
+                        "fraction_label": "L3"
+                      },
+                      {
+                        "fraction_id": 4938,
+                        "fraction_label": "L4"
+                      },
+                      {
+                        "fraction_id": 4939,
+                        "fraction_label": "L5"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "loc": []
+    },
+    "other_area": {
+      "macpl": [
+        {
+          "anz_id": 124,
+          "anz_label": "PTGCNTYYYY1A / 01A (Zona PON Propuesta)",
+          "anz_comment": null,
+          "anz_loc_code": null,
+          "anz_type": "macpl",
+          "closures": [
+            {
+              "id": 2042,
+              "label": "PTGCNT-01A-X",
+              "closure_uuid": "37a9ed57-dae5-4e33-9b54-567cc243a615",
+              "free_port": 8,
+              "available_ports": 1,
+              "occupied_ports": 7,
+              "distance": 81.49990079,
+              "coordinates": {
+                "lat": 9.042973799499386,
+                "lon": -69.75511886943828
+              }
+            },
+            {
+              "id": 2024,
+              "label": "PTGCNT-01A-A",
+              "closure_uuid": "8df167d3-abc5-4bf3-905d-64c344d02d9c",
+              "free_port": 1,
+              "available_ports": 8,
+              "occupied_ports": 0,
+              "distance": 129.87262302,
+              "coordinates": {
+                "lat": 9.043554132183221,
+                "lon": -69.7552799717632
+              }
+            }
+          ],
+          "mdus": [
+            {
+              "mdu_id": 18179,
+              "mdu_uuid": "0f06ef60-927a-4c31-be45-8bdf83856ce1",
+              "coordinates": {
+                "lat": 9.043363900770501,
+                "lon": -69.75507596691706
+              },
+              "mdu_plant": {
+                "building_id": 18179,
+                "building_uuid": "0f06ef60-927a-4c31-be45-8bdf83856ce1",
+                "building_label": "C.C. (P) QUINTO",
+                "bd_demand_point_address": null,
+                "bd_adduction_other_hazards": null,
+                "bd_adduction_progress": "C",
+                "bd_adduction_type": null,
+                "bd_adduction_hazards": null,
+                "coordinates": {
+                  "lat": 9.043363900770501,
+                  "lon": -69.75507596691706
+                },
+                "columns": [
+                  {
+                    "column_id": 223,
+                    "column_index": 1
+                  }
+                ],
+                "floors": [
+                  {
+                    "floor_id": 1290,
+                    "floor_level": "1",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2028,
+                        "fbox_label": "PTGCNT-01A-D",
+                        "fbx_active": true,
+                        "cl_id": 2028,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4853,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4854,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4855,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4856,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4857,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1289,
+                    "floor_level": "2",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4848,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4849,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4850,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4851,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4852,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1288,
+                    "floor_level": "3",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2029,
+                        "fbox_label": "PTGCNT-01A-E",
+                        "fbx_active": true,
+                        "cl_id": 2029,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4843,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4844,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4845,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4846,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4847,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1287,
+                    "floor_level": "4",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4838,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4839,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4840,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4841,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4842,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1286,
+                    "floor_level": "5",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2030,
+                        "fbox_label": "PTGCNT-01A-F",
+                        "fbx_active": true,
+                        "cl_id": 2030,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4833,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4834,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4835,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4836,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4837,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1285,
+                    "floor_level": "6",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4828,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4829,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4830,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4831,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4832,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1284,
+                    "floor_level": "7",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2031,
+                        "fbox_label": "PTGCNT-01A-G",
+                        "fbx_active": true,
+                        "cl_id": 2031,
+                        "cl_label": null,
+                        "available_ports": 8,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4823,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4824,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4825,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4826,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4827,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1283,
+                    "floor_level": "8",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4818,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4819,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4820,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4821,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4822,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1291,
+                    "floor_level": "P.B.",
+                    "floorboxes": [],
+                    "fractions": []
+                  }
+                ]
+              }
+            },
+            {
+              "mdu_id": 18156,
+              "mdu_uuid": "12c7d560-c6bc-4137-960b-c814e34ca1e1",
+              "coordinates": {
+                "lat": 9.043233943915116,
+                "lon": -69.75471013986318
+              },
+              "mdu_plant": {
+                "building_id": 18156,
+                "building_uuid": "12c7d560-c6bc-4137-960b-c814e34ca1e1",
+                "building_label": "C.C. (P) PRIMERO",
+                "bd_demand_point_address": null,
+                "bd_adduction_other_hazards": null,
+                "bd_adduction_progress": "E",
+                "bd_adduction_type": null,
+                "bd_adduction_hazards": null,
+                "coordinates": {
+                  "lat": 9.043233943915116,
+                  "lon": -69.75471013986318
+                },
+                "columns": [
+                  {
+                    "column_id": 222,
+                    "column_index": 1
+                  }
+                ],
+                "floors": [
+                  {
+                    "floor_id": 1281,
+                    "floor_level": "1",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2026,
+                        "fbox_label": "PTGCNT-01A-B",
+                        "fbx_active": true,
+                        "cl_id": 2026,
+                        "cl_label": null,
+                        "available_ports": 0,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4813,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4814,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4815,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4816,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4817,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1280,
+                    "floor_level": "2",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4808,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4809,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4810,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4811,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4812,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1279,
+                    "floor_level": "3",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 2027,
+                        "fbox_label": "PTGCNT-01A-C",
+                        "fbx_active": true,
+                        "cl_id": 2027,
+                        "cl_label": null,
+                        "available_ports": 0,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": [
+                      {
+                        "fraction_id": 4803,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4804,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4805,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4806,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4807,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1278,
+                    "floor_level": "4",
+                    "floorboxes": [],
+                    "fractions": [
+                      {
+                        "fraction_id": 4798,
+                        "fraction_label": "A"
+                      },
+                      {
+                        "fraction_id": 4799,
+                        "fraction_label": "B"
+                      },
+                      {
+                        "fraction_id": 4800,
+                        "fraction_label": "C"
+                      },
+                      {
+                        "fraction_id": 4801,
+                        "fraction_label": "D"
+                      },
+                      {
+                        "fraction_id": 4802,
+                        "fraction_label": "E"
+                      }
+                    ]
+                  },
+                  {
+                    "floor_id": 1282,
+                    "floor_level": "P.B.",
+                    "floorboxes": [
+                      {
+                        "fbox_id": 26388,
+                        "fbox_label": "FBX-01-P.B.-01",
+                        "fbx_active": true,
+                        "cl_id": 26388,
+                        "cl_label": null,
+                        "available_ports": 0,
+                        "occupied_ports": 0,
+                        "coordinates": null
+                      }
+                    ],
+                    "fractions": []
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "loc": []
+    },
+    "outside_area": {
+      "closures": [
+        {
+          "id": 2025,
+          "label": "PTGCNT-02A-X/A",
+          "closure_uuid": "77cd0324-19fb-481a-b0f3-d6e9b481c5c3",
+          "free_port": 1,
+          "available_ports": 11,
+          "occupied_ports": 5,
+          "distance": 65.85877666,
+          "coordinates": {
+            "lat": 9.042946734853462,
+            "lon": -69.75532209700589
+          }
+        }
+      ],
+      "mdus": [
+        {
+          "mdu_id": 18157,
+          "mdu_uuid": "89ce2796-4914-4e14-ac31-3c5bb46c6c2d",
+          "coordinates": {
+            "lat": 9.042902668766043,
+            "lon": -69.75568726494853
+          },
+          "mdu_plant": {
+            "building_id": 18157,
+            "building_uuid": "89ce2796-4914-4e14-ac31-3c5bb46c6c2d",
+            "building_label": "RES. (EC) SEGUNDO",
+            "bd_demand_point_address": null,
+            "bd_adduction_other_hazards": null,
+            "bd_adduction_progress": "C",
+            "bd_adduction_type": null,
+            "bd_adduction_hazards": null,
+            "coordinates": {
+              "lat": 9.042902668766043,
+              "lon": -69.75568726494853
+            },
+            "columns": [
+              {
+                "column_id": 224,
+                "column_index": 1
+              }
+            ],
+            "floors": [
+              {
+                "floor_id": 1296,
+                "floor_level": "1",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2032,
+                    "fbox_label": "PTGCNT-02A-C",
+                    "fbx_active": true,
+                    "cl_id": 2032,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4874,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4875,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4876,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4877,
+                    "fraction_label": "D"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1295,
+                "floor_level": "2",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4870,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4871,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4872,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4873,
+                    "fraction_label": "D"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1294,
+                "floor_level": "3",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4866,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4867,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4868,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4869,
+                    "fraction_label": "D"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1293,
+                "floor_level": "4",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2034,
+                    "fbox_label": "PTGCNT-02A-D",
+                    "fbx_active": true,
+                    "cl_id": 2034,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4862,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4863,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4864,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4865,
+                    "fraction_label": "D"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1292,
+                "floor_level": "5",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4858,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4859,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4860,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4861,
+                    "fraction_label": "D"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1297,
+                "floor_level": "P.B.",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4878,
+                    "fraction_label": "LOCAL 1"
+                  },
+                  {
+                    "fraction_id": 4879,
+                    "fraction_label": "LOCAL 2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "mdu_id": 18178,
+          "mdu_uuid": "e555a376-5dd3-4584-922c-ed3f0ff72b9e",
+          "coordinates": {
+            "lat": 9.043348459992355,
+            "lon": -69.75551482106155
+          },
+          "mdu_plant": {
+            "building_id": 18178,
+            "building_uuid": "e555a376-5dd3-4584-922c-ed3f0ff72b9e",
+            "building_label": "(EC)  C.C. CUARTO",
+            "bd_demand_point_address": null,
+            "bd_adduction_other_hazards": null,
+            "bd_adduction_progress": "C",
+            "bd_adduction_type": null,
+            "bd_adduction_hazards": null,
+            "coordinates": {
+              "lat": 9.043348459992355,
+              "lon": -69.75551482106155
+            },
+            "columns": [
+              {
+                "column_id": 225,
+                "column_index": 1
+              }
+            ],
+            "floors": [
+              {
+                "floor_id": 1300,
+                "floor_level": "1",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4890,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4891,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4892,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4893,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4894,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1299,
+                "floor_level": "2",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4885,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4886,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4887,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4888,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4889,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1298,
+                "floor_level": "3",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4880,
+                    "fraction_label": "A"
+                  },
+                  {
+                    "fraction_id": 4881,
+                    "fraction_label": "B"
+                  },
+                  {
+                    "fraction_id": 4882,
+                    "fraction_label": "C"
+                  },
+                  {
+                    "fraction_id": 4883,
+                    "fraction_label": "D"
+                  },
+                  {
+                    "fraction_id": 4884,
+                    "fraction_label": "E"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1301,
+                "floor_level": "P.B.",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2035,
+                    "fbox_label": "PTGCNT-02A-B",
+                    "fbx_active": true,
+                    "cl_id": 2035,
+                    "cl_label": null,
+                    "available_ports": 8,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": []
+              }
+            ]
+          }
+        },
+        {
+          "mdu_id": 18191,
+          "mdu_uuid": "e9e880ec-6b33-4c9a-ad3d-3d34c0324552",
+          "coordinates": {
+            "lat": 9.042877582403008,
+            "lon": -69.75465984963633
+          },
+          "mdu_plant": {
+            "building_id": 18191,
+            "building_uuid": "e9e880ec-6b33-4c9a-ad3d-3d34c0324552",
+            "building_label": "TORRE CENTRAL GUANARE",
+            "bd_demand_point_address": null,
+            "bd_adduction_other_hazards": null,
+            "bd_adduction_progress": "C",
+            "bd_adduction_type": null,
+            "bd_adduction_hazards": null,
+            "coordinates": {
+              "lat": 9.042877582403008,
+              "lon": -69.75465984963633
+            },
+            "columns": [
+              {
+                "column_id": 227,
+                "column_index": 1
+              }
+            ],
+            "floors": [
+              {
+                "floor_id": 1313,
+                "floor_level": "0",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2104,
+                    "fbox_label": "FBX-01-00-01",
+                    "fbx_active": true,
+                    "cl_id": 2104,
+                    "cl_label": null,
+                    "available_ports": 0,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": []
+              },
+              {
+                "floor_id": 1314,
+                "floor_level": "-1",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4946,
+                    "fraction_label": "A Abo 43267"
+                  },
+                  {
+                    "fraction_id": 4947,
+                    "fraction_label": "B Abo 87690"
+                  },
+                  {
+                    "fraction_id": 4948,
+                    "fraction_label": "C Abo 998765"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1312,
+                "floor_level": "1",
+                "floorboxes": [],
+                "fractions": [
+                  {
+                    "fraction_id": 4943,
+                    "fraction_label": "A Abo 9078"
+                  },
+                  {
+                    "fraction_id": 4944,
+                    "fraction_label": "B Abo 10987"
+                  },
+                  {
+                    "fraction_id": 4945,
+                    "fraction_label": "C Abo 76543"
+                  }
+                ]
+              },
+              {
+                "floor_id": 1311,
+                "floor_level": "2",
+                "floorboxes": [
+                  {
+                    "fbox_id": 2105,
+                    "fbox_label": "FBX-01-02-01",
+                    "fbx_active": true,
+                    "cl_id": 2105,
+                    "cl_label": null,
+                    "available_ports": 0,
+                    "occupied_ports": 0,
+                    "coordinates": null
+                  }
+                ],
+                "fractions": [
+                  {
+                    "fraction_id": 4940,
+                    "fraction_label": "A Abo 1234"
+                  },
+                  {
+                    "fraction_id": 4941,
+                    "fraction_label": "B Abo 6789"
+                  },
+                  {
+                    "fraction_id": 4942,
+                    "fraction_label": "C Abo 5432"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

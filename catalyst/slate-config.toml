@@ -1,0 +1,8 @@
+# Configuración de Catalyst Slate para este proyecto.
+# El build la copia a dist/.catalyst/slate-config.toml (ver tooling/paginas-modulos.ts),
+# porque `catalyst deploy slate` la busca dentro de la carpeta que publica (dist/).
+#
+# framework = "static": Slate publica dist/ tal cual, sin compilar en el servidor.
+# Así el entorno (pruebas o producción) se decide aquí, con el script de build.
+framework = "static"
+deployment_name = "default"

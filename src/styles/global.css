@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+/*
+ * Sistema de diseño Netuno: la ÚNICA fuente de colores, sombras y animaciones.
+ * Los módulos usan estas clases (bg-netuno-500, text-texto-suave, shadow-tarjeta...)
+ * y nunca colores sueltos: así todos los widgets se ven igual.
+ */
+@theme {
+  /* Marca */
+  --color-netuno-900: #0a1a2f;
+  --color-netuno-800: #112a4a;
+  --color-netuno-500: #29b6f6;
+  --color-netuno-link: #5dadf3;
+  --color-netuno-oscuro: #0c1032;
+  --color-accion: #1e96e0;
+  /* Cabeceras de formularios de gestión (Traslado de servicio: ts-* del widget jQuery) */
+  --color-ts-cabecera: #1e2a4a;
+  --color-ts-badge: #3b4560;
+
+  /* Texto y superficies */
+  --color-texto: #333333;
+  --color-texto-suave: #636363;
+  --color-fondo: #f4f6f9;
+  --color-borde: #e5e7eb;
+
+  /* Estados de negocio */
+  --color-hogar: #d0cb15;
+  --color-empresa: #020610;
+  --color-conectado: #00b050;
+  --color-desconectado: #d20000;
+
+  /* Sombras */
+  --shadow-tarjeta: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.08);
+  --shadow-tarjeta-hover: 0 4px 12px rgb(16 24 40 / 0.12);
+
+  /* Animaciones */
+  --animate-aparecer: aparecer 0.18s ease-out;
+  --animate-entrar-modal: entrar-modal 0.2s ease-out;
+  --animate-aviso: entrar-aviso 0.25s ease-out;
+  --animate-brillo: brillo 1.4s ease-in-out infinite;
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes entrar-modal {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes entrar-aviso {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes brillo {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family:
+      'Lato',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Bloque con brillo mientras carga (ver ui/Estados.tsx → Esqueleto) */
+  .esqueleto {
+    background: linear-gradient(90deg, #e9edf2 25%, #f5f7fa 50%, #e9edf2 75%);
+    background-size: 200% 100%;
+    animation: var(--animate-brillo);
+    border-radius: 6px;
+  }
+
+  /* HTML que devuelven algunas APIs (tablas de OLT, Autofind...). Ver ui/HtmlSeguro.tsx */
+  .html-api table {
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .html-api th,
+  .html-api td {
+    border: 1px solid #e0e0e0;
+    padding: 2px 6px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .html-api pre {
+    font-size: 12px;
+    white-space: pre;
+  }
+}
+
+/* Respeta "reducir movimiento" del sistema operativo */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

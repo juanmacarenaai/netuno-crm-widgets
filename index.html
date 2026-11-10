@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Widgets Netuno</title>
+    <!--
+      Recuperación de caché: Slate guarda los HTML un año en el navegador. Si una página guardada apunta a archivos
+      que ya no existen (o el código no arranca), se recarga UNA vez con una URL nueva que el navegador no tiene.
+      Script en línea a propósito: debe funcionar aunque falle todo lo demás. Ver src/core/actualizacion.ts.
+    -->
+    <script>
+      (function () {
+        var recargado = false;
+        function recargar(motivo) {
+          if (recargado || window.netunoArranco === 'listo') return;
+          var url = new URL(window.location.href);
+          if (url.searchParams.get('nr') === '1') return;
+          recargado = true;
+          url.searchParams.set('nv', String(Date.now()));
+          url.searchParams.set('nr', '1');
+          console.warn('[Widgets Netuno] ' + motivo + ': recargando con una URL nueva.');
+          window.location.replace(url.toString());
+        }
+        window.addEventListener(
+          'error',
+          function (e) {
+            var el = e.target;
+            var ruta = el && (el.src || el.href);
+            if (ruta && /\/assets\//.test(ruta)) recargar('No se pudo cargar ' + ruta);
+          },
+          true,
+        );
+        window.setTimeout(function () {
+          if (!window.netunoArranco) recargar('El widget no arrancó');
+        }, 20000);
+      })();
+    </script>
+    <!--
+      SDK de widgets de Zoho CRM. Es la única dependencia externa del widget.
+      Para cambiar de versión, cambiar solo esta línea (ver docs/arquitectura.md).
+    -->
+    <script src="https://live.zwidgets.com/js-sdk/1.2/ZohoEmbededAppSDK.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

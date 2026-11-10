@@ -1,0 +1,36 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "18756000000022001",
+      "name": "CRM",
+      "domain": {
+        "id": "10099077681",
+        "name": "crm-884905664.development"
+      },
+      "timezone": "America/Caracas",
+      "env": [
+        {
+          "idx": 1,
+          "id": "884905664",
+          "name": "Development",
+          "type": 3
+        },
+        {
+          "idx": 2,
+          "id": "10102600193",
+          "name": "Production",
+          "type": 1
+        }
+      ]
+    }
+  ]
+}

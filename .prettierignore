@@ -1,0 +1,6 @@
+dist
+node_modules
+package-lock.json
+catalyst.json
+.catalystrc
+src/modulos/facturacion/lib/plantillasCorreo.ts

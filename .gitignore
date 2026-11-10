@@ -1,0 +1,27 @@
+# Dependencias y builds
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Credenciales locales (NUNCA se versionan)
+.env.local
+.env.*.local
+
+# Certificados para probar dentro de Zoho desde el equipo
+certificados/
+
+# Catalyst CLI
+.catalyst/
+# Archivos de versiones anteriores que se vuelven a publicar (tooling/desplegar.mjs)
+.slate-historial/
+.slate/
+catalyst-debug.log
+
+# Registros y sistema
+*.log
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Zips para widgets con hosting Zoho (npm run empaquetar:*)
+paquetes/

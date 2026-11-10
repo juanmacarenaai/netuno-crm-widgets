@@ -1,0 +1,36 @@
+/* Marcadores del selector de ubicación (sin el recuadro blanco de L.divIcon) */
+.selector-pin,
+.selector-cuadro {
+  background: none;
+  border: none;
+}
+
+.selector-cuadro span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.selector-ficha table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.selector-ficha th,
+.selector-ficha td {
+  border-top: 1px solid #eceff1;
+  padding: 3px 6px 3px 0;
+  text-align: left;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+.selector-ficha th {
+  font-weight: normal;
+  color: #636363;
+  white-space: nowrap;
+}

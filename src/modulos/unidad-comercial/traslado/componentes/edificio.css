@@ -1,0 +1,106 @@
+/* Edificio prototipo: la misma plantilla para cualquier MDU de Weezie (app/maps/maps.edificio.css).
+   Las ventanas son las unidades; su franja inferior es el estado de la caja que las atiende. */
+
+.edif-vista {
+  background: linear-gradient(to bottom, #d9eefc 0%, #eef7fd 60%, #f7fbfe 100%);
+}
+
+.edif-torre {
+  position: relative;
+  background: repeating-linear-gradient(90deg, #f4f7fa 0, #f4f7fa 46px, #edf1f5 46px, #edf1f5 48px);
+  border: 2px solid #90a4ae;
+  border-bottom: 0;
+  box-shadow: 0 10px 30px rgba(38, 50, 56, 0.18);
+}
+
+/* Cara lateral */
+.edif-torre::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -24px;
+  width: 22px;
+  height: calc(100% + 2px);
+  background: linear-gradient(to bottom, #b8c6cf, #8fa3ae);
+  transform: skewY(-40deg);
+  transform-origin: left top;
+}
+
+.edif-techo {
+  position: relative;
+  background: #546e7a;
+}
+
+/* Cara superior del techo */
+.edif-techo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: -24px;
+  top: -18px;
+  height: 18px;
+  background: #78909c;
+  transform: skewX(-50deg);
+  transform-origin: bottom left;
+}
+
+.edif-piso {
+  border-top: 3px solid #cfd8dc;
+}
+
+.edif-piso-planta-baja {
+  background: #e8edf1;
+}
+.edif-piso-sotano {
+  background: repeating-linear-gradient(135deg, #e3e7ea 0, #e3e7ea 8px, #eceff1 8px, #eceff1 16px);
+}
+
+.edif-unidad {
+  border: 2px solid #ffffff;
+  border-radius: 4px 4px 2px 2px;
+  background: linear-gradient(160deg, #e6f5ff 0%, #b3dbf5 55%, #92c6ea 100%);
+  box-shadow:
+    inset 0 -6px 0 var(--edif-estado, #90a4ae),
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s ease;
+}
+
+.edif-unidad:hover,
+.edif-unidad:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.edif-piso-planta-baja .edif-unidad {
+  height: 50px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(160deg, #d7e3ea 0%, #a7bcc8 100%);
+}
+
+.edif-piso-sotano .edif-unidad {
+  background: linear-gradient(160deg, #cfd8dc 0%, #b0bec5 100%);
+}
+
+/* Ventana "encendida": la unidad elegida */
+.edif-unidad[aria-pressed='true'] {
+  background: linear-gradient(160deg, #fff8d6 0%, #ffe58a 60%, #ffd54f 100%);
+  border-color: #1e96e0;
+  transform: translateY(-2px) scale(1.06);
+}
+
+.edif-unidad.edif-coincide {
+  border-color: #f39c12;
+  animation: edif-pulso 1.2s ease-in-out 2;
+}
+
+@keyframes edif-pulso {
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.edif-suelo {
+  height: 14px;
+  margin: 0 -24px 0 -2px;
+  background: linear-gradient(to bottom, #8d9a6f, #6f7d52);
+}
