@@ -6,7 +6,15 @@ import { iconoServicio } from '../iconos';
 import { estaConectado, nombreServicioLegible, SERVICIOS_POR_PAGINA } from '../lib/cuentas';
 import type { Contrato } from '../tipos';
 
-function FilaServicio({ servicio, derecha }: { servicio: Contrato; derecha?: ReactNode }) {
+function FilaServicio({
+  servicio,
+  derecha,
+  conContrato,
+}: {
+  servicio: Contrato;
+  derecha?: ReactNode;
+  conContrato?: boolean;
+}) {
   const conectado = estaConectado(servicio.status);
   return (
     <>
@@ -22,9 +30,19 @@ function FilaServicio({ servicio, derecha }: { servicio: Contrato; derecha?: Rea
         <span className="truncate text-sm font-semibold text-gray-800">
           {nombreServicioLegible(servicio)}
         </span>
-        <span className="flex items-center gap-1.5 text-[11px] text-gray-500">
-          <PuntoEstado activo={conectado} />
-          {servicio.nombreServicio} · {servicio.status}
+        <span className="flex flex-wrap items-center gap-x-1 text-[11px] text-gray-500">
+          <span className="flex items-center gap-1.5">
+            <PuntoEstado activo={conectado} />
+            {servicio.nombreServicio} · {servicio.status}
+          </span>
+          {conContrato && (
+            <span>
+              · Contrato{' '}
+              <strong className="font-semibold text-gray-700 tabular-nums">
+                {servicio.codContrato ?? servicio.idProducto}
+              </strong>
+            </span>
+          )}
         </span>
       </span>
       {derecha}
@@ -42,6 +60,8 @@ export interface ListaServiciosProps {
   porPagina?: number;
   /** Texto cuando no hay servicios (p. ej. Contraseñas muestra solo los que tienen contraseña). */
   mensajeVacio?: string;
+  /** Muestra el número de contrato en cada servicio, aun cerrado (Contraseñas: guía al cliente). */
+  mostrarContrato?: boolean;
 }
 
 /** Servicios de una cuenta, paginados. */
@@ -50,6 +70,7 @@ export function ListaServicios({
   acciones,
   porPagina = SERVICIOS_POR_PAGINA,
   mensajeVacio = 'La cuenta no tiene servicios.',
+  mostrarContrato = false,
 }: ListaServiciosProps) {
   const [pagina, setPagina] = useState(0);
   const [abierto, setAbierto] = useState<string | null>(null);
@@ -91,7 +112,7 @@ export function ListaServicios({
                 className="flex items-center gap-3 px-2 py-2"
                 title={`${servicio.nombreServicio} - ${servicio.nombrePaquete ?? ''}`}
               >
-                <FilaServicio servicio={servicio} />
+                <FilaServicio servicio={servicio} conContrato={mostrarContrato} />
               </li>
             );
           }
@@ -107,6 +128,7 @@ export function ListaServicios({
               >
                 <FilaServicio
                   servicio={servicio}
+                  conContrato={mostrarContrato}
                   derecha={
                     <ChevronDown
                       aria-hidden="true"

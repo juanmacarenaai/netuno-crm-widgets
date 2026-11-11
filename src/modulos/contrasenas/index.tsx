@@ -142,6 +142,7 @@ export default function Contrasenas() {
             <TarjetaCuenta
               cuenta={{ ...cuenta, contratos: serviciosConContrasena(cuenta) }}
               mensajeSinServicios="La cuenta no tiene servicios de NetUno Go."
+              mostrarContrato
               accionesServicio={(servicio) => (
                 <AccionesServicio
                   contrato={servicio}

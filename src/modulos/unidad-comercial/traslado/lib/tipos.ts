@@ -2,6 +2,9 @@
 
 type Numero = number | string | null | undefined;
 
+/** ID de un elemento de red en Weezie (zona PON, NAP, edificio, piso, unidad, caja de piso). */
+export type IdWeezie = number | string | null;
+
 export interface CoordenadasApi {
   lat: number;
   lon: number;
@@ -10,6 +13,7 @@ export interface CoordenadasApi {
 export interface ClosureApi {
   id: number | string;
   label: string;
+  closure_uuid?: string | null;
   available_ports?: Numero;
   occupied_ports?: Numero;
   free_port?: Numero;
@@ -36,6 +40,7 @@ export interface FloorApi {
 
 export interface MduApi {
   mdu_id: number | string;
+  mdu_uuid?: string | null;
   coordinates?: CoordenadasApi | null;
   mdu_plant?: {
     building_label?: string | null;
@@ -48,6 +53,8 @@ export interface MduApi {
 export interface ZonaApi {
   anz_id?: number | string;
   anz_label?: string;
+  /** Tipo de zona PON (p. ej. "macpl"). */
+  anz_type?: string | null;
   closures?: ClosureApi[];
   mdus?: MduApi[];
 }
@@ -63,4 +70,6 @@ export interface SeleccionUnidad {
   lon: number;
   /** Línea para Observaciones. */
   texto: string;
+  /** IDs de Weezie del piso, la unidad y la caja de piso que la atiende (y el cierre de esa caja). */
+  ids: { piso: IdWeezie; unidad: IdWeezie; caja: IdWeezie; cierreCaja: IdWeezie };
 }

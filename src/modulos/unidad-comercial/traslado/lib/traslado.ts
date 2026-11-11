@@ -4,6 +4,7 @@
  */
 import type { Contrato, Cuenta } from '@/shared/cuentas';
 import { formatearGps, parsearCoordenadas } from '../../lib/coordenadas';
+import type { IdWeezie } from './tipos';
 import type { PuntoRed } from './weezie';
 
 export const TIPOS_VIVIENDA = ['Casa', 'Apartamento', 'Local Comercial', 'Oficina', 'Quinta'] as const;
@@ -217,6 +218,56 @@ export function idSolicitud(cuenta: unknown, fecha: Date = new Date()): string {
   return `TRS-${cuenta ?? '0'}-${fecha.toISOString().replace(/\D/g, '').slice(0, 14)}`;
 }
 
+type PuntoElegido = Partial<PuntoRed> &
+  Pick<PuntoRed, 'tipo' | 'id' | 'etiqueta' | 'puertosLibres' | 'lat' | 'lon'>;
+
+/**
+ * IDs de red de Weezie donde quedará instalado el cliente. IT los usa en la gestión de fallas masivas: la falla que
+ * registra soporte afecta al cliente si su ID está entre estos. null si no se eligió un punto de Weezie en el mapa.
+ */
+export interface RedUbicacion {
+  fuente: 'Weezie';
+  idZonaPon: IdWeezie;
+  zonaPon: string | null;
+  /** Pendiente: Weezie closures/nearby no trae la OLT. */
+  idOlt: IdWeezie;
+  olt: string | null;
+  /** NAP elegida; en edificio, el cierre (closure) de la caja de piso que atiende la unidad. */
+  idNap: IdWeezie;
+  nap: string | null;
+  idEdificio: IdWeezie;
+  edificio: string | null;
+  idPiso: IdWeezie;
+  piso: string | null;
+  idCajaPiso: IdWeezie;
+  cajaPiso: string | null;
+  idApartamento: IdWeezie;
+  apartamento: string | null;
+}
+
+export function redDeUbicacion(punto: PuntoElegido | null): RedUbicacion | null {
+  if (!punto) return null;
+  const unidad = punto.unidad;
+  const edificio = punto.tipo === 'edificio';
+  return {
+    fuente: 'Weezie',
+    idZonaPon: punto.zonaPon?.id ?? null,
+    zonaPon: punto.zonaPon?.etiqueta ?? punto.zonaEtiqueta ?? null,
+    idOlt: null,
+    olt: null,
+    idNap: edificio ? (unidad?.ids.cierreCaja ?? null) : (punto.idWeezie ?? null),
+    nap: edificio ? (unidad?.caja?.etiqueta ?? null) : punto.etiqueta,
+    idEdificio: edificio ? (punto.idWeezie ?? null) : null,
+    edificio: edificio ? (unidad?.edificio ?? punto.etiqueta) : null,
+    idPiso: unidad?.ids.piso ?? null,
+    piso: unidad?.piso ?? null,
+    idCajaPiso: unidad?.ids.caja ?? null,
+    cajaPiso: unidad?.caja?.etiqueta ?? null,
+    idApartamento: unidad?.ids.unidad ?? null,
+    apartamento: unidad?.unidad ?? null,
+  };
+}
+
 export interface FormularioSolicitud {
   politica: string;
   direccionActual: string;
@@ -245,14 +296,14 @@ export function armarSolicitud({
   formulario: FormularioSolicitud;
   coordenadas: { lat: number; lon: number };
   resultado: ResultadoCobertura;
-  punto:
-    (Partial<PuntoRed> & Pick<PuntoRed, 'tipo' | 'id' | 'etiqueta' | 'puertosLibres' | 'lat' | 'lon'>) | null;
+  punto: PuntoElegido | null;
   cliente: { id?: string | null; documento?: string | null; email?: unknown } | null;
   agente: { nombre?: string | null; id?: string | null; idDesk?: string | null } | null;
   gpsActual: { lat: number; lon: number } | null;
   fecha?: Date;
 }) {
   const unidad = punto?.unidad;
+  const red = redDeUbicacion(punto);
   const numeroCuenta = cuenta?.cuenta ?? null;
   const t = (v: unknown) => String(v ?? '').trim();
 
@@ -289,7 +340,8 @@ export function armarSolicitud({
     cobertura: {
       origen: punto ? 'Weezie' : 'Simulada',
       zona: resultado.zona,
-      nap: resultado.nap ?? null,
+      // Con un punto de Weezie: la NAP elegida o la caja de piso de la unidad
+      nap: resultado.nap ?? red?.nap ?? null,
       detalle: resultado.detalle ?? null,
     },
     // NAP o edificio de Weezie elegido en el mapa (null si se movió el pin a mano o se escribieron coordenadas)
@@ -316,5 +368,7 @@ export function armarSolicitud({
         }
       : null,
     observaciones: t(formulario.observaciones) || null,
+    // Todos los IDs de red de la ubicación (gestión de fallas masivas)
+    red,
   };
 }

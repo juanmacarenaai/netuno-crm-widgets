@@ -227,7 +227,27 @@ export const cuentasDemo: Cuenta[] = [
     // Troubleshooting: el nodo tiene un posible evento masivo
     { saldo: -1.02, descNodo: 'NODO-PEM', fCompromisoPago: '01/11/2026' },
   ),
-  cuenta('9000005', 'Empresa', 'Conectado', 'Maracay', []),
+  // Cambio de titularidad (Empresa): saldo cero, dos enlaces de Internet y una troncal SIP
+  cuenta(
+    '9000005',
+    'Empresa',
+    'Conectado',
+    'Maracay',
+    [
+      contrato('5000051', 'Internet', 'Conectado', {
+        nombrePaquete: 'Fibranet1Gb_1Gb',
+        coordenadasGps: '10.2469, -67.5958',
+        campos: { nombrePaqueteFact: 'Fibranet 1000/1000 Mb', cuenta: 9000005 },
+      }),
+      contrato('5000052', 'Internet', 'Conectado', {
+        nombrePaquete: 'Fibranet500_500Mb',
+        coordenadasGps: '10.2480, -67.5960',
+        campos: { nombrePaqueteFact: 'Fibranet 500/500 Mb', cuenta: 9000005 },
+      }),
+      contrato('5000053', 'Telefonía', 'Conectado', { nombrePaquete: 'Troncal SIP' }),
+    ],
+    { saldo: 0 },
+  ),
   // Activar servicios: solo Internet FTTH (idProducto con prefijos, como en BOSS) → NetUnoGO, Telefonía y Salud
   cuenta(
     '9000006',

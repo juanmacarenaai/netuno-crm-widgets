@@ -22,6 +22,12 @@ describe('normalizarWeezie con la muestra de Guanare', () => {
       enZonaEstimada: true,
       grupo: 'same_area',
     });
+    expect(punto('nap-2023')).toMatchObject({
+      idWeezie: 2023,
+      uuid: '87379a75-a8b2-4461-babf-2f2c4305fd7c',
+      zonaPon: { id: 125, etiqueta: 'PTGCNTYYYY3A / 03A (Zona PON Construida)', tipo: 'macpl' },
+    });
+    expect(punto('mdu-18158')).toMatchObject({ idWeezie: 18158, zonaPon: { id: 125 } });
     expect(punto('nap-2043')).toMatchObject({ categoria: 'nap-pocos-puertos', puertosLibres: 2 });
     expect(punto('nap-2042')).toMatchObject({
       categoria: 'nap-pocos-puertos',

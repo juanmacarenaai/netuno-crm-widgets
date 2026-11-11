@@ -29,6 +29,8 @@ export interface TarjetaCuentaProps {
   mensajeSinServicios?: string;
   /** Contenido propio en lugar de la lista de servicios (p. ej. Facturación). */
   cuerpo?: ReactNode;
+  /** Muestra el número de contrato en cada servicio. */
+  mostrarContrato?: boolean;
 }
 
 /**
@@ -42,6 +44,7 @@ export function TarjetaCuenta({
   serviciosPorPagina,
   mensajeSinServicios,
   cuerpo,
+  mostrarContrato,
 }: TarjetaCuentaProps) {
   const tipo = tipoCliente(cuenta);
   const estiloTipo = TIPO[tipo];
@@ -90,6 +93,7 @@ export function TarjetaCuenta({
             acciones={accionesServicio}
             porPagina={serviciosPorPagina}
             mensajeVacio={mensajeSinServicios}
+            mostrarContrato={mostrarContrato}
           />
         )}
       </div>

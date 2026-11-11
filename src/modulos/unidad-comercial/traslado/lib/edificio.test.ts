@@ -163,7 +163,7 @@ describe('normalizarEdificio con casos límite', () => {
 describe('selección de unidades', () => {
   const m = deMuestra('TERCERO');
   const p4 = m.pisos.find((p) => p.etiqueta === 'Piso 4') as Piso;
-  const unidadB = p4.unidades[1] ?? { id: '', etiqueta: '' };
+  const unidadB = p4.unidades[1] ?? { id: '', etiqueta: '', idWeezie: null };
 
   it('texto de la selección para Observaciones', () => {
     const s = seleccionUnidad(m, p4, unidadB);
@@ -175,6 +175,15 @@ describe('selección de unidades', () => {
       unidad: 'B',
       caja: { etiqueta: 'PTGCNT-03A-D', libres: 8, total: 8, piso: 'Piso 4' },
     });
+  });
+
+  it('IDs de Weezie del piso, la unidad y la caja de piso', () => {
+    const s = seleccionUnidad(m, p4, unidadB);
+    expect(s.ids.piso).toBe(p4.idWeezie);
+    expect(s.ids.unidad).toBe(unidadB.idWeezie);
+    expect(s.ids.caja).toBe(p4.caja?.idWeezie);
+    expect(s.ids.cierreCaja).toBe(p4.caja?.idCierre);
+    expect(Object.values(s.ids).every((id) => typeof id === 'number')).toBe(true);
   });
 
   it('elegibilidad y motivos', () => {

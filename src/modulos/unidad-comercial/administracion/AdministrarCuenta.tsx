@@ -16,6 +16,7 @@ import { ActivarServicios } from '../activar-servicios/ActivarServicios';
 import { BajaVoluntaria } from '../baja-voluntaria/BajaVoluntaria';
 import { CambioEquipo } from '../cambio-equipo/CambioEquipo';
 import { CambioPlan } from '../cambio-plan/CambioPlan';
+import { CambioTitularidad } from '../cambio-titularidad/CambioTitularidad';
 import { TrasladoServicio } from '../traslado/TrasladoServicio';
 
 /** Props que recibe cada gestión de Administrar cuenta. */
@@ -40,7 +41,7 @@ const OPCIONES: readonly Opcion[] = [
   { id: 'cambioEquipo', etiqueta: 'Cambio de equipo', icono: Router, componente: CambioEquipo },
   { id: 'activarServicios', etiqueta: 'Activar servicios', icono: CirclePlus, componente: ActivarServicios },
   { id: 'bajaVoluntaria', etiqueta: 'Baja voluntaria', icono: UserMinus, componente: BajaVoluntaria },
-  { id: 'cambioTitularidad', etiqueta: 'Cambio titularidad', icono: Users },
+  { id: 'cambioTitularidad', etiqueta: 'Cambio titularidad', icono: Users, componente: CambioTitularidad },
   { id: 'trasladoServicio', etiqueta: 'Traslado de Servicio', icono: Truck, componente: TrasladoServicio },
 ];
 

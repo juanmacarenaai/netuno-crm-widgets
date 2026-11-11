@@ -4,29 +4,29 @@ Cada widget jQuery se migra como un módulo de este proyecto. Mientras tanto, el
 
 ## Estado
 
-| Módulo              | Widget anterior                               | Tamaño original | Base disponible                                                          | Estado                                                                                             |
-| ------------------- | --------------------------------------------- | --------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| `diagnostico`       | —                                             | —               | —                                                                        | ✅ Listo (herramienta interna)                                                                     |
-| `resumen`           | `widgetUnidadComercialResumen`                | ~640 líneas     | Tarjetas de cuenta de `UnidadComercialReact`                             | ✅ v0.2.0: usa `src/shared/cuentas`                                                                |
-| `unidad-comercial`  | `widgetUnidadComercial` (`UnidadComercialJS`) | ~11.400 líneas  | `UnidadComercialReact`: fases 0-2, traslado y cambio de plan ya en React | 🔶 v0.9.0: todas las gestiones (falta validar en Fase3; Cambio de titularidad pendiente de diseño) |
-| `contrasenas`       | `Netuno-Zoho-CRM-widgetContrasenas`           | ~1.300 líneas   | Tarjetas de `src/shared/cuentas`                                         | 🔶 v0.12.0: completo (falta validar en Fase3)                                                      |
-| `historial`         | `widgetHistorialV1.1`                         | ~4.000 líneas   | —                                                                        | 🔶 v0.10.0: completo (falta validar en Fase3)                                                      |
-| `historial-resumen` | — (recuadro del Canvas)                       | —               | `src/shared/historial`                                                   | 🔶 v0.11.0: nuevo (falta validar en Fase3)                                                         |
-| `facturacion`       | `widgetFacturacionV1.2`                       | ~10.800 líneas  | Tarjetas de `src/shared/cuentas`, tabla de `src/shared/historial`        | 🔶 v0.13.0: entrega 1 (consulta y documentos); entrega 2 pendiente                                 |
+| Módulo              | Widget anterior                               | Tamaño original | Base disponible                                                          | Estado                                                                                          |
+| ------------------- | --------------------------------------------- | --------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `diagnostico`       | —                                             | —               | —                                                                        | ✅ Listo (herramienta interna)                                                                  |
+| `resumen`           | `widgetUnidadComercialResumen`                | ~640 líneas     | Tarjetas de cuenta de `UnidadComercialReact`                             | ✅ v0.2.0: usa `src/shared/cuentas`                                                             |
+| `unidad-comercial`  | `widgetUnidadComercial` (`UnidadComercialJS`) | ~11.400 líneas  | `UnidadComercialReact`: fases 0-2, traslado y cambio de plan ya en React | 🔶 v0.14.0: todas las gestiones (falta validar en Fase3; Cambio de titularidad en demostración) |
+| `contrasenas`       | `Netuno-Zoho-CRM-widgetContrasenas`           | ~1.300 líneas   | Tarjetas de `src/shared/cuentas`                                         | 🔶 v0.12.0: completo (falta validar en Fase3)                                                   |
+| `historial`         | `widgetHistorialV1.1`                         | ~4.000 líneas   | —                                                                        | 🔶 v0.10.0: completo (falta validar en Fase3)                                                   |
+| `historial-resumen` | — (recuadro del Canvas)                       | —               | `src/shared/historial`                                                   | 🔶 v0.11.0: nuevo (falta validar en Fase3)                                                      |
+| `facturacion`       | `widgetFacturacionV1.2`                       | ~10.800 líneas  | Tarjetas de `src/shared/cuentas`, tabla de `src/shared/historial`        | 🔶 v0.13.0: entrega 1 (consulta y documentos); entrega 2 pendiente                              |
 
 ### Unidad Comercial: entregas
 
-| Entrega                 | Contenido                                                                                                                                                                                                                                                                                                                         | Estado    |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| 1. Consulta             | Tarjetas de cuenta (compartidas con Resumen), servicios, Ver contrato y detalle, valores ópticos, OLT, serial ONT, autofind, consumo (Internet y Telefonía), mapa de la cuenta, Administrar cuenta (con permisos)                                                                                                                 | ✅ v0.2.0 |
-| 2. Cambio de plan       | Elegibilidad, upgrade (Netuno) con registro del canal de atención (Eventos de CRM), downgrade con ticket en Zoho Desk, exclusión de beneficiarios de Salud y aprobación según las reglas de `cambio-plan/config.ts`                                                                                                               | ✅ v0.3.0 |
-| 3. Traslado de servicio | Formulario, autocompletado de dirección (Photon), selector de ubicación con capas de Weezie (NAP y edificios), vista de edificio con unidades y cajas de piso, solicitud guardada en el cliente (`Solicitud_Traslado`, `Estado_Traslado`)                                                                                         | ✅ v0.4.0 |
-| 4.1 Cambio de equipo    | Contratos de Internet conectados, serial nuevo, confirmación, comando en Netuno (`/contrato/cambio-equipo/sac`) y registro del canal de atención                                                                                                                                                                                  | ✅ v0.5.0 |
-| 4.2 Activar servicios   | Elegibilidad, paquetes de NetUnoGO o Premium, Telefonía y Salud, correo de NetUnoGO, datos del titular y del beneficiario de Salud, activación en Netuno, sexo y fecha de nacimiento en la cuenta de CRM, registro del canal de atención                                                                                          | ✅ v0.6.0 |
-| 4.3 Baja voluntaria     | Elegibilidad, servicios con dependencias (Internet, NetUnoGO, Salud principal), paquetizados, ticket abierto, retención, devolución del equipo, ticket en Zoho Desk (territorio de Catalyst), desconexión inmediata en Netuno y registro del canal                                                                                | ✅ v0.7.0 |
-| 4.4 Crear ticket        | Botón por servicio: departamentos de Desk, formulario armado con el diseño activo de tickets (todos los tipos de campo), datos del cliente y del servicio precargados (CRM, BOSS, NAS, potencia, territorio), cuenta y contacto de Desk, producto, categoría y subcategoría, imágenes pegadas, ticket existente                   | ✅ v0.8.0 |
-| 4.5 Troubleshooting     | Evento masivo (Catalyst) con ticket hijo y ticket padre, posible evento masivo del nodo, diagnóstico guiado (sin conexión por luces POWER/LOS/PON, intermitencia, lentitud), reporte de fallas a node-red, valores ópticos e IP, restablecer la ONT con registro del canal, asistencia remota (Zoho Assist) y paso a Crear ticket | ✅ v0.9.0 |
-| Cambio de titularidad   | No existe en el widget jQuery. Queda "Pronto" hasta tener el diseño de la PM                                                                                                                                                                                                                                                      | ⏳        |
+| Entrega                 | Contenido                                                                                                                                                                                                                                                                                                                         | Estado     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| 1. Consulta             | Tarjetas de cuenta (compartidas con Resumen), servicios, Ver contrato y detalle, valores ópticos, OLT, serial ONT, autofind, consumo (Internet y Telefonía), mapa de la cuenta, Administrar cuenta (con permisos)                                                                                                                 | ✅ v0.2.0  |
+| 2. Cambio de plan       | Elegibilidad, upgrade (Netuno) con registro del canal de atención (Eventos de CRM), downgrade con ticket en Zoho Desk, exclusión de beneficiarios de Salud y aprobación según las reglas de `cambio-plan/config.ts`                                                                                                               | ✅ v0.3.0  |
+| 3. Traslado de servicio | Formulario, autocompletado de dirección (Photon), selector de ubicación con capas de Weezie (NAP y edificios), vista de edificio con unidades y cajas de piso, solicitud guardada en el cliente (`Solicitud_Traslado`, `Estado_Traslado`)                                                                                         | ✅ v0.4.0  |
+| 4.1 Cambio de equipo    | Contratos de Internet conectados, serial nuevo, confirmación, comando en Netuno (`/contrato/cambio-equipo/sac`) y registro del canal de atención                                                                                                                                                                                  | ✅ v0.5.0  |
+| 4.2 Activar servicios   | Elegibilidad, paquetes de NetUnoGO o Premium, Telefonía y Salud, correo de NetUnoGO, datos del titular y del beneficiario de Salud, activación en Netuno, sexo y fecha de nacimiento en la cuenta de CRM, registro del canal de atención                                                                                          | ✅ v0.6.0  |
+| 4.3 Baja voluntaria     | Elegibilidad, servicios con dependencias (Internet, NetUnoGO, Salud principal), paquetizados, ticket abierto, retención, devolución del equipo, ticket en Zoho Desk (territorio de Catalyst), desconexión inmediata en Netuno y registro del canal                                                                                | ✅ v0.7.0  |
+| 4.4 Crear ticket        | Botón por servicio: departamentos de Desk, formulario armado con el diseño activo de tickets (todos los tipos de campo), datos del cliente y del servicio precargados (CRM, BOSS, NAS, potencia, territorio), cuenta y contacto de Desk, producto, categoría y subcategoría, imágenes pegadas, ticket existente                   | ✅ v0.8.0  |
+| 4.5 Troubleshooting     | Evento masivo (Catalyst) con ticket hijo y ticket padre, posible evento masivo del nodo, diagnóstico guiado (sin conexión por luces POWER/LOS/PON, intermitencia, lentitud), reporte de fallas a node-red, valores ópticos e IP, restablecer la ONT con registro del canal, asistencia remota (Zoho Assist) y paso a Crear ticket | ✅ v0.9.0  |
+| Cambio de titularidad   | Nuevo, desde el diseño de la PM (ver `docs/cambio-titularidad.md`): visual completa en modo demostración; servicios pendientes                                                                                                                                                                                                    | 🔶 v0.14.0 |
 
 Comportamientos iguales a `UnidadComercialReact` (y sus diferencias intencionales con el widget jQuery,
 documentadas en `widgetUnidadComercial/docs/migracion-react.md`). Las pruebas de la lógica se portaron a
@@ -40,6 +40,18 @@ nuevas:
   `ordgId` (con error de escritura). Si Desk no responde se guarda `null`, igual que antes.
 - Traslado: las búsquedas de lugares iguales se reutilizan durante un minuto (TanStack Query) en lugar de
   repetirse a Photon.
+- Traslado (v0.15.0, pedido de IT para la gestión de fallas masivas): `Solicitud_Traslado` agrega el objeto `red`
+  con **todos los IDs de Weezie** de la ubicación elegida en el mapa: `idZonaPon`, `idOlt`, `idNap`, `idEdificio`,
+  `idPiso`, `idCajaPiso` e `idApartamento`, cada uno con su etiqueta. Así, al registrar una falla masiva se revisa si
+  el ID afectado está entre los de la ubicación del cliente. Los campos anteriores (`cobertura`, `puntoRed`,
+  `unidadEdificio`) se conservan sin cambios por si la regla o la función de CRM que crea el ticket los lee.
+  - **Casa** (NAP elegida): zona PON y NAP; edificio, piso, caja y apartamento quedan en `null`.
+  - **Edificio**: la NAP es el cierre (`cl_id`) de la caja de piso que atiende la unidad; en Weezie suele coincidir
+    con el ID de la caja (`fbox_id`). Por confirmar con IT.
+  - **`idOlt` queda en `null`:** Weezie `closures/nearby` no trae la OLT. Pendiente de que IT indique de dónde sale.
+  - Sin punto de Weezie (pin movido a mano o coordenadas escritas), `red` es `null`.
+  - `cobertura.nap` ahora se llena también con la NAP o la caja de piso elegida (antes solo con la cobertura
+    simulada).
 
 Cambio de equipo (origen: `showTab` → `cambioEquipo` y `continueFuncionality` → `button_modal_cambioEquipo`):
 
@@ -52,7 +64,7 @@ Cambio de equipo (origen: `showTab` → `cambioEquipo` y `continueFuncionality` 
   `pdf_call` con pdfMake en Catalyst), pero el botón no está en ningún HTML, así que hoy nadie la usa. Se
   agrega si Netuno lo pide.
 - **Cambio de titularidad no existe en el widget jQuery** (la pestaña solo muestra "(pendiente)"): no hay nada que
-  migrar; sigue como "Pronto" hasta tener el diseño de la PM.
+  migrar. Se construyó desde el diseño de la PM en v0.14.0 (ver `docs/cambio-titularidad.md`).
 
 Activar servicios (origen: `showTab` → `activarServicios`, `activarServicios`, `continueActivarServicio`,
 `validarDatosActivacion`, `actualizarCRM_Y_Activar`, `activarServicio`):
@@ -232,7 +244,9 @@ el cambio de correo de NetUno Go, sin commit). Mismas gestiones, cuerpos y texto
 | WiFi: nombre, contraseña o ambos | `POST /contrato/contrasena/restablecer` con el contrato; antes, `GET /ont/wifi` | 4          |
 
 Título del widget: **"Gestión de Correo y Contraseña"** (v0.13.2). Las acciones de cada servicio van en columna, una
-línea por acción con ícono, nombre y descripción, todas del mismo ancho.
+línea por acción con ícono, nombre y descripción, todas del mismo ancho. Cada servicio muestra su **número de contrato** (`codContrato`, o `idProducto` si
+falta) aun cerrado, para guiar al cliente (v0.15.1; opción `mostrarContrato` de `TarjetaCuenta`, apagada en los demás
+widgets).
 
 **Solo se muestran los contratos Streaming (NetUno Go)**, como el widget publicado (`dist/widgetContrasenas.zip`).
 Las gestiones del WiFi (rama `nuevaFuncionalidad`) están hechas y probadas, pero apagadas:

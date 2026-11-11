@@ -4,7 +4,7 @@
  */
 import { claveTexto } from '@/shared/lib/texto';
 import { configEdificio, configWeezie, type Puertos } from '../config';
-import type { FloorboxApi, MduApi, SeleccionUnidad } from './tipos';
+import type { FloorboxApi, IdWeezie, MduApi, SeleccionUnidad } from './tipos';
 
 export type { SeleccionUnidad };
 
@@ -21,6 +21,10 @@ export type EstadoCaja = keyof typeof ESTADOS_CAJA;
 
 export interface Caja {
   id: string;
+  /** fbox_id de Weezie. */
+  idWeezie: IdWeezie;
+  /** cl_id: la caja de piso como cierre (closure) de Weezie. */
+  idCierre: IdWeezie;
   etiqueta: string;
   activa: boolean;
   libres: number;
@@ -32,11 +36,15 @@ export interface Caja {
 
 export interface Unidad {
   id: string;
+  /** fraction_id de Weezie (apartamento o local). */
+  idWeezie: IdWeezie;
   etiqueta: string;
 }
 
 export interface Piso {
   id: string;
+  /** floor_id de Weezie. */
+  idWeezie: IdWeezie;
   nivelOriginal: string | number | null | undefined;
   orden: number | null;
   tipo: string;
@@ -116,6 +124,8 @@ function cajaDesde(fb: FloorboxApi): Caja {
   const ocupadas = Number(fb.occupied_ports) || 0;
   return {
     id: `fb-${fb.fbox_id !== undefined ? fb.fbox_id : fb.cl_id}`,
+    idWeezie: fb.fbox_id ?? fb.cl_id ?? null,
+    idCierre: fb.cl_id ?? null,
     etiqueta: (fb.fbox_label || fb.cl_label || `Caja ${fb.fbox_id || ''}`).trim(),
     activa: fb.fbx_active !== false,
     libres,
@@ -197,6 +207,7 @@ export function normalizarEdificio(
     const nivel = interpretarNivel(f.floor_level, cfg);
     return {
       id: `piso-${f.floor_id !== undefined ? f.floor_id : i}`,
+      idWeezie: f.floor_id ?? null,
       nivelOriginal: f.floor_level,
       orden: nivel.orden,
       tipo: nivel.tipo,
@@ -204,6 +215,7 @@ export function normalizarEdificio(
       posicionOriginal: i,
       unidades: lista(f.fractions).map((fr, j) => ({
         id: `u-${fr.fraction_id !== undefined ? fr.fraction_id : `${i}-${j}`}`,
+        idWeezie: fr.fraction_id ?? null,
         etiqueta: String(fr.fraction_label ?? '?').trim() || '?',
       })),
       cajas: lista(f.floorboxes).map(cajaDesde),
@@ -302,6 +314,12 @@ export function seleccionUnidad(
     lat: modelo.lat,
     lon: modelo.lon,
     texto: partes.join(' · '),
+    ids: {
+      piso: piso.idWeezie,
+      unidad: unidad.idWeezie,
+      caja: piso.caja?.idWeezie ?? null,
+      cierreCaja: piso.caja?.idCierre ?? null,
+    },
   };
 }
 

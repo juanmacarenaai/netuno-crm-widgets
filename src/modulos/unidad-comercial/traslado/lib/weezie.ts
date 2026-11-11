@@ -4,7 +4,7 @@
  */
 import { metrosEntre } from '../../lib/coordenadas';
 import type { ConsultaWeezie, Puertos } from '../config';
-import type { ClosureApi, CoordenadasApi, MduApi, SeleccionUnidad, ZonaApi } from './tipos';
+import type { ClosureApi, CoordenadasApi, IdWeezie, MduApi, SeleccionUnidad, ZonaApi } from './tipos';
 
 interface DatosWeezie {
   estimated_client_connection?: ZonaApi | null;
@@ -57,6 +57,11 @@ export const CATEGORIAS: readonly Categoria[] = [
 export interface PuntoRed {
   tipo: 'nap' | 'edificio';
   id: string;
+  /** ID del NAP (closure) o del edificio (MDU) en Weezie, sin prefijo. */
+  idWeezie: IdWeezie;
+  uuid: string | null;
+  /** Zona PON donde está el punto (null fuera de área). */
+  zonaPon: ZonaPon | null;
   lat: number;
   lon: number;
   forma: 'circulo' | 'cuadro';
@@ -82,7 +87,16 @@ export interface PuntoRed {
   unidad?: SeleccionUnidad;
 }
 
+export interface ZonaPon {
+  id: IdWeezie;
+  etiqueta: string | null;
+  tipo: string | null;
+}
+
 const lista = <T>(v: T[] | null | undefined): T[] => (Array.isArray(v) ? v : []);
+
+const zonaPonDe = (zona: ZonaApi | null): ZonaPon | null =>
+  zona ? { id: zona.anz_id ?? null, etiqueta: zona.anz_label ?? null, tipo: zona.anz_type ?? null } : null;
 
 function zonasDe(grupo: DatosWeezie['same_area']): ZonaApi[] {
   if (Array.isArray(grupo)) return grupo;
@@ -116,6 +130,9 @@ function napDesde(
   return {
     tipo: 'nap',
     id: `nap-${closure.id}`,
+    idWeezie: closure.id,
+    uuid: closure.closure_uuid ?? null,
+    zonaPon: zonaPonDe(zona),
     lat: closure.coordinates.lat,
     lon: closure.coordinates.lon,
     forma: 'circulo',
@@ -169,6 +186,9 @@ function edificioDesde(
   return {
     tipo: 'edificio',
     id: `mdu-${mdu.mdu_id}`,
+    idWeezie: mdu.mdu_id,
+    uuid: mdu.mdu_uuid ?? null,
+    zonaPon: zonaPonDe(zona),
     lat: mdu.coordinates.lat,
     lon: mdu.coordinates.lon,
     forma: 'cuadro',

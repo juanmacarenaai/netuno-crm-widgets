@@ -40,6 +40,7 @@ Definidos en un solo archivo: [`src/modulos.ts`](src/modulos.ts).
 
 | Documento                                            | Contenido                                                  |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
+| [AGENTS.md](AGENTS.md)                               | **Guía para agentes de IA** (Claude, Codex, Cursor…)       |
 | [docs/catalyst-slate.md](docs/catalyst-slate.md)     | **Paso a paso**: Catalyst Slate + widgets en Zoho CRM      |
 | [docs/agregar-modulo.md](docs/agregar-modulo.md)     | Cómo agregar o migrar un módulo, y las reglas del proyecto |
 | [docs/arquitectura.md](docs/arquitectura.md)         | Capas, decisiones, entornos y seguridad                    |

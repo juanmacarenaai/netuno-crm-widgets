@@ -242,6 +242,7 @@ describe('armarSolicitud', () => {
       puntoRed: null,
       unidadEdificio: null,
       observaciones: null,
+      red: null,
     });
   });
 
@@ -249,6 +250,8 @@ describe('armarSolicitud', () => {
     const punto = {
       tipo: 'edificio' as const,
       id: 'mdu-1',
+      idWeezie: 1,
+      zonaPon: { id: 125, etiqueta: 'Z', tipo: 'macpl' },
       etiqueta: 'E · Piso 4 · Unidad B',
       zonaEtiqueta: 'Z',
       puertosLibres: 40,
@@ -264,6 +267,7 @@ describe('armarSolicitud', () => {
         lat: 9,
         lon: -69,
         texto: '',
+        ids: { piso: 1309, unidad: 4930, caja: 2037, cierreCaja: 2037 },
       },
     };
     const s = armarSolicitud({
@@ -293,6 +297,51 @@ describe('armarSolicitud', () => {
       pisoCaja: 'Piso 4',
       puertosLibresCaja: 8,
       puertosTotalesCaja: 8,
+    });
+    expect(s.cobertura.nap).toBe('FB');
+    expect(s.red).toEqual({
+      fuente: 'Weezie',
+      idZonaPon: 125,
+      zonaPon: 'Z',
+      idOlt: null,
+      olt: null,
+      idNap: 2037,
+      nap: 'FB',
+      idEdificio: 1,
+      edificio: 'E',
+      idPiso: 1309,
+      piso: 'Piso 4',
+      idCajaPiso: 2037,
+      cajaPiso: 'FB',
+      idApartamento: 4930,
+      apartamento: 'B',
+    });
+  });
+
+  it('Hogar con NAP de Weezie: zona PON y NAP; sin edificio ni apartamento', () => {
+    const s = armarSolicitud({
+      ...base,
+      resultado: { zona: 'Verde', detalle: 'NAP asignada: PTGCNT-01A-A · 8 puertos libres' },
+      punto: {
+        tipo: 'nap',
+        id: 'nap-2024',
+        idWeezie: 2024,
+        zonaPon: { id: 124, etiqueta: 'PTGCNTYYYY1A / 01A (Zona PON Propuesta)', tipo: 'macpl' },
+        etiqueta: 'PTGCNT-01A-A',
+        puertosLibres: 8,
+        lat: 9.04,
+        lon: -69.75,
+      },
+    });
+    expect(s.cobertura.nap).toBe('PTGCNT-01A-A');
+    expect(s.red).toMatchObject({
+      idZonaPon: 124,
+      zonaPon: 'PTGCNTYYYY1A / 01A (Zona PON Propuesta)',
+      idNap: 2024,
+      nap: 'PTGCNT-01A-A',
+      idEdificio: null,
+      idApartamento: null,
+      idOlt: null,
     });
   });
 });
