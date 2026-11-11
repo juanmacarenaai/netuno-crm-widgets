@@ -9,7 +9,7 @@ import {
   type NuevoTitular,
   type UnidadComercial,
 } from '../lib/cambioTitularidad';
-import { AlertaCargando, Bloque, Subtitulo } from './Piezas';
+import { AlertaCargando, Bloque, Subtitulo, type Acordeon } from './Piezas';
 
 /** Estado de una verificación contra un servicio (OCR, duplicados, correo NetunoGo). */
 export type Verificacion = 'inicial' | 'verificando' | 'ok' | 'rechazado' | 'error';
@@ -23,6 +23,7 @@ export function DatosNuevoTitular({
   onEscanear,
   validacionDocumento,
   onValidarDocumento,
+  acordeon,
 }: {
   unidad: UnidadComercial;
   titular: NuevoTitular;
@@ -32,6 +33,7 @@ export function DatosNuevoTitular({
   onEscanear: (archivo: File) => void;
   validacionDocumento: Verificacion;
   onValidarDocumento: () => void;
+  acordeon?: Acordeon;
 }) {
   const empresa = unidad === 'Empresa';
   const archivo = useRef<HTMLInputElement>(null);
@@ -45,6 +47,7 @@ export function DatosNuevoTitular({
       titulo={`Datos del Nuevo Titular · ${empresa ? 'Persona Jurídica' : 'Persona Natural'}`}
       icono={UserRound}
       insignia="Formulario de prospecto"
+      acordeon={acordeon}
     >
       <div className="flex flex-wrap items-center gap-3 rounded-lg border border-dashed border-netuno-500/50 bg-sky-50 px-4 py-3">
         <FileText aria-hidden="true" className="h-5 w-5 shrink-0 text-accion" />

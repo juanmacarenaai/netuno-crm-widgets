@@ -4,7 +4,7 @@ Gestión de **Administrar cuenta** (Unidad Comercial) que transfiere uno o vario
 nuevo titular. No existía en el widget jQuery: se construye desde el diseño de la PM.
 
 - **Código:** `src/modulos/unidad-comercial/cambio-titularidad/`
-- **Estado (v0.14.1):** la visual está completa y funciona en **modo demostración**. Los servicios todavía no están
+- **Estado (v0.15.3):** la visual está completa y funciona en **modo demostración**. Los servicios todavía no están
   conectados (ver [Servicios](#servicios)).
 
 ## Origen: prototipo de la PM
@@ -32,7 +32,15 @@ nuevo titular. No existía en el widget jQuery: se construye desde el diseño de
 
 ### A. Formulario del asesor
 
-Los bloques aparecen uno tras otro: cada uno se muestra cuando el anterior está completo.
+Los cinco pasos forman un **acordeón** (v0.15.3) para evitar el scroll largo:
+
+- Hay un solo paso abierto a la vez. Los siguientes se ven cerrados, con candado, hasta completar el anterior.
+- Cada paso termina con **Continuar**, que se habilita cuando el paso está completo, cierra ese paso y abre el
+  siguiente.
+- Un paso cerrado muestra en su cabecera un check verde y un resumen de lo que se llenó (contratos y motivo,
+  nombre y documento del nuevo titular, servicios, documentos cargados). Se puede reabrir con un clic.
+- Si un cambio deshace un paso (por ejemplo, se desmarca el contrato), los siguientes vuelven a bloquearse. Lo
+  que ya se había llenado se conserva.
 
 1. **Registro de solicitud**
    - Contratos a transferir. Entran todos los de la cuenta **excepto Streaming y Salud**, y solo los Conectado se
@@ -113,8 +121,8 @@ Diferencias con el prototipo:
   Cronología del prototipo. Dónde se registra cada evento se define junto con los servicios.
 - **Sin avisos de "pendiente" (v0.14.1, a pedido del usuario):** el prototipo mostraba avisos ámbar desde el
   inicio ("Seleccione al menos un contrato…", "Complete los datos obligatorios…", "Valide el correo NetunoGo…",
-  "No se puede continuar sin todos los documentos…"). Se quitaron: cada bloque aparece cuando el anterior está
-  completo, y el botón de validación pendiente ("Validar duplicados", "Validar unicidad") se resalta como botón
+  "No se puede continuar sin todos los documentos…"). Se quitaron: el paso siguiente se habilita cuando el anterior
+  está completo, y el botón de validación pendiente ("Validar duplicados", "Validar unicidad") se resalta como botón
   principal. Se conservan los mensajes de resultado (saldo verificado, bloqueos, documento o correo rechazado) y
   el contador de documentos (0/2 → 2/2).
 

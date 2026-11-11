@@ -1,6 +1,6 @@
 {
   "name": "netuno-crm-widgets",
-  "version": "0.15.1",
+  "version": "0.15.3",
   "private": true,
   "description": "Widgets de Netuno para Zoho CRM: un solo proyecto, una sola versión, un módulo por widget",
   "type": "module",

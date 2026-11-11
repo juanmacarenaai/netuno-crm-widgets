@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { CheckCircle2, Eye, FileText, FolderUp, Send, Upload } from 'lucide-react';
 import { Alerta, Boton, cn } from '@/ui';
 import type { AccionPrevista, DocumentoRequerido, UnidadComercial } from '../lib/cambioTitularidad';
-import { Bloque, ResumenTitulares, type DatosTitular } from './Piezas';
+import { Bloque, ResumenTitulares, type Acordeon, type DatosTitular } from './Piezas';
 
 function FilaDocumento({
   documento,
@@ -71,6 +71,7 @@ export function DocumentosRequeridos({
   subiendo,
   onSubir,
   onQuitar,
+  acordeon,
 }: {
   unidad: UnidadComercial;
   documentos: readonly DocumentoRequerido[];
@@ -78,6 +79,7 @@ export function DocumentosRequeridos({
   subiendo: string | null;
   onSubir: (id: string, archivo: File) => void;
   onQuitar: (id: string) => void;
+  acordeon?: Acordeon;
 }) {
   const cargados = documentos.filter((d) => archivos[d.id]).length;
   const completos = cargados === documentos.length;
@@ -87,6 +89,7 @@ export function DocumentosRequeridos({
       icono={FolderUp}
       insignia={`${cargados}/${documentos.length}`}
       insigniaLista={completos}
+      acordeon={acordeon}
     >
       {documentos.map((d) => (
         <FilaDocumento
@@ -109,6 +112,7 @@ export function VistaPrevia({
   enviando,
   error,
   onEnviar,
+  acordeon,
 }: {
   anterior: DatosTitular;
   nuevo: DatosTitular;
@@ -116,9 +120,10 @@ export function VistaPrevia({
   enviando: boolean;
   error: string | null;
   onEnviar: () => void;
+  acordeon?: Acordeon;
 }) {
   return (
-    <Bloque titulo="Vista Previa de Acciones" icono={Eye}>
+    <Bloque titulo="Vista Previa de Acciones" icono={Eye} acordeon={acordeon}>
       <ResumenTitulares anterior={anterior} nuevo={nuevo} />
       <ol className="flex flex-col gap-2">
         {acciones.map((a, i) => (

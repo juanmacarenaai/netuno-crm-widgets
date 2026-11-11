@@ -9,7 +9,7 @@ import {
   type ContratoTransferible,
   type UnidadComercial,
 } from '../lib/cambioTitularidad';
-import { AlertaCargando, Bloque, Lectura, Subtitulo } from './Piezas';
+import { AlertaCargando, Bloque, Lectura, Subtitulo, type Acordeon } from './Piezas';
 import type { Verificacion } from './DatosNuevoTitular';
 
 function Opcional({
@@ -67,6 +67,7 @@ export function ServiciosTransferidos({
   onAgregarBeneficiario,
   onCambiarBeneficiario,
   onQuitarBeneficiario,
+  acordeon,
 }: {
   unidad: UnidadComercial;
   contratos: ContratoTransferible[];
@@ -85,10 +86,11 @@ export function ServiciosTransferidos({
   onAgregarBeneficiario: () => void;
   onCambiarBeneficiario: (id: string, cambios: Partial<Beneficiario>) => void;
   onQuitarBeneficiario: (id: string) => void;
+  acordeon?: Acordeon;
 }) {
   const empresa = unidad === 'Empresa';
   return (
-    <Bloque titulo="Servicios Transferidos" icono={Layers}>
+    <Bloque titulo="Servicios Transferidos" icono={Layers} acordeon={acordeon}>
       <Alerta>
         Se heredan del contrato actual en <b>solo lectura</b>: dirección, geolocalización, serial ONT y plan
         {empresa ? ', e IP fijas' : ''}. Sin visita técnica y sin costo de instalación.

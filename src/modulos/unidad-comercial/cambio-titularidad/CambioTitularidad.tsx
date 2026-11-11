@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { FlaskConical } from 'lucide-react';
 import { mensajeDeError } from '@/core/http/errores';
 import type { Cuenta } from '@/shared/cuentas';
@@ -6,7 +6,7 @@ import { useZoho } from '@/shared/zoho/contexto';
 import { Alerta, useAvisos } from '@/ui';
 import { DatosNuevoTitular, type Verificacion } from './componentes/DatosNuevoTitular';
 import { DocumentosRequeridos, VistaPrevia } from './componentes/DocumentosYVistaPrevia';
-import type { DatosTitular } from './componentes/Piezas';
+import type { Acordeon, DatosTitular } from './componentes/Piezas';
 import { RegistroSolicitud, type EstadoSaldo } from './componentes/RegistroSolicitud';
 import {
   Seguimiento,
@@ -47,6 +47,11 @@ import {
 } from './servicio';
 
 const ahora = () => new Date().toLocaleString('es-VE', { dateStyle: 'short', timeStyle: 'short' });
+
+/** Pasos del formulario, en orden: se muestran como acordeón (uno abierto a la vez). */
+const PASOS = ['registro', 'titular', 'servicios', 'documentos', 'vista'] as const;
+type Paso = (typeof PASOS)[number];
+const idPaso = (paso: Paso) => `titularidad-${paso}`;
 
 function nuevoEvento(tipo: TipoEvento, titulo: string, detalle: string, archivo?: string): EventoSolicitud {
   return { id: `${tipo}-${Date.now()}-${Math.random()}`, fecha: ahora(), tipo, titulo, detalle, archivo };
@@ -94,6 +99,8 @@ export function CambioTitularidad({ cuenta }: { cuenta: Cuenta; onCompletado?: (
   const [enviando, setEnviando] = useState(false);
   const [errorEnvio, setErrorEnvio] = useState<string | null>(null);
   const [solicitud, setSolicitud] = useState<SolicitudEnCurso | null>(null);
+  // Paso abierto del acordeón (null: todos cerrados)
+  const [abierto, setAbierto] = useState<Paso | null>('registro');
 
   const elegidos = contratos.filter((c) => seleccion.includes(c.idProducto));
   const nombreNuevo = nombreNuevoTitular(titular, unidad);
@@ -105,6 +112,47 @@ export function CambioTitularidad({ cuenta }: { cuenta: Cuenta; onCompletado?: (
   const saludListo = !opcionales.salud || !conSalud || beneficiariosCompletos(beneficiarios);
   const serviciosListos = titularListo && netunoGoListo && saludListo;
   const documentosListos = serviciosListos && documentosRequeridos.every((d) => archivos[d.id]);
+
+  // ── Acordeón ──────────────────────────────────────────────────────────────────────────────────
+  // Cada paso se habilita al completar el anterior; si un cambio deshace un paso, se abre el primero pendiente
+  const listo: Record<Paso, boolean> = {
+    registro: registroListo,
+    titular: titularListo,
+    servicios: serviciosListos,
+    documentos: documentosListos,
+    vista: false,
+  };
+  const disponible = (paso: Paso) => {
+    const anterior = PASOS[PASOS.indexOf(paso) - 1];
+    return !anterior || listo[anterior];
+  };
+  const pasoAbierto: Paso | null =
+    abierto === null || disponible(abierto) ? abierto : (PASOS.find((p) => !listo[p]) ?? 'vista');
+
+  // Al abrir otro paso, el anterior se cierra: se lleva la vista a la cabecera del paso abierto
+  const ultimoAbierto = useRef(pasoAbierto);
+  useEffect(() => {
+    if (ultimoAbierto.current === pasoAbierto) return;
+    ultimoAbierto.current = pasoAbierto;
+    if (pasoAbierto) {
+      document.getElementById(idPaso(pasoAbierto))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [pasoAbierto]);
+
+  const acordeon = (paso: Paso, resumen?: string): Acordeon => {
+    const indice = PASOS.indexOf(paso);
+    const siguiente = PASOS[indice + 1];
+    return {
+      paso: indice + 1,
+      id: idPaso(paso),
+      abierto: pasoAbierto === paso,
+      bloqueado: !disponible(paso),
+      completo: listo[paso],
+      resumen,
+      onAlternar: () => setAbierto(pasoAbierto === paso ? null : paso),
+      onContinuar: siguiente ? () => setAbierto(siguiente) : undefined,
+    };
+  };
 
   // ── Registro ──────────────────────────────────────────────────────────────────────────────────
   const alternarContrato = (idProducto: string) => {
@@ -363,6 +411,7 @@ export function CambioTitularidad({ cuenta }: { cuenta: Cuenta; onCompletado?: (
     setArchivos({});
     setErrorEnvio(null);
     setSolicitud(null);
+    setAbierto('registro');
   };
 
   const avisoDemostracion = SERVICIOS_SIMULADOS && (
@@ -395,7 +444,7 @@ export function CambioTitularidad({ cuenta }: { cuenta: Cuenta; onCompletado?: (
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-3">
       {avisoDemostracion}
       <RegistroSolicitud
         unidad={unidad}
@@ -409,76 +458,93 @@ export function CambioTitularidad({ cuenta }: { cuenta: Cuenta; onCompletado?: (
         observaciones={observaciones}
         onObservaciones={setObservaciones}
         saldo={saldo}
+        acordeon={acordeon(
+          'registro',
+          elegidos.length > 0 ? `${elegidos.map((c) => c.codigo).join(', ')} · ${motivo}` : undefined,
+        )}
       />
-      {registroListo && (
-        <DatosNuevoTitular
-          unidad={unidad}
-          titular={titular}
-          onCambiar={cambiarTitular}
-          documentoActual={documento ?? ''}
-          ocr={ocr}
-          onEscanear={escanear}
-          validacionDocumento={validacionDocumento}
-          onValidarDocumento={validarDocumento}
-        />
-      )}
-      {titularListo && (
-        <ServiciosTransferidos
-          unidad={unidad}
-          contratos={elegidos}
-          streaming={opcionales.streaming}
-          salud={opcionales.salud}
-          conNetunoGo={conNetunoGo}
-          onNetunoGo={setConNetunoGo}
-          correoNetunoGo={correoNetunoGo}
-          onCorreoNetunoGo={(valor) => {
-            setCorreoNetunoGo(valor);
-            setValidacionCorreo('inicial');
-          }}
-          validacionCorreo={validacionCorreo}
-          onValidarCorreo={validarCorreo}
-          conSalud={conSalud}
-          onSalud={setConSalud}
-          titularSalud={{
-            nombre: nombreNuevo,
-            documento: titular.documento,
-            fecha: titular.fecha,
-            sexo: titular.sexo,
-          }}
-          beneficiarios={beneficiarios}
-          onAgregarBeneficiario={agregarBeneficiario}
-          onCambiarBeneficiario={cambiarBeneficiario}
-          onQuitarBeneficiario={quitarBeneficiario}
-        />
-      )}
-      {serviciosListos && (
-        <DocumentosRequeridos
-          unidad={unidad}
-          documentos={documentosRequeridos}
-          archivos={archivos}
-          subiendo={subiendo}
-          onSubir={subir}
-          onQuitar={quitar}
-        />
-      )}
-      {documentosListos && (
-        <VistaPrevia
-          anterior={anterior}
-          nuevo={nuevo}
-          acciones={accionesPrevistas({
-            unidad,
-            documentos: documentosRequeridos.length,
-            correo: titular.correo,
-            nuevoTitular: nombreNuevo,
-            titularActual: nombreAnterior,
-            contratos: elegidos.length,
-            facturacion,
-          })}
-          enviando={enviando}
-          error={errorEnvio}
-          onEnviar={() => void enviar()}
-        />
-      )}
+      <DatosNuevoTitular
+        unidad={unidad}
+        titular={titular}
+        onCambiar={cambiarTitular}
+        documentoActual={documento ?? ''}
+        ocr={ocr}
+        onEscanear={escanear}
+        validacionDocumento={validacionDocumento}
+        onValidarDocumento={validarDocumento}
+        acordeon={acordeon(
+          'titular',
+          titular.documento.trim()
+            ? [nombreNuevo, `${titular.tipoDocumento} ${titular.documento}`].filter(Boolean).join(' · ')
+            : undefined,
+        )}
+      />
+      <ServiciosTransferidos
+        unidad={unidad}
+        contratos={elegidos}
+        streaming={opcionales.streaming}
+        salud={opcionales.salud}
+        conNetunoGo={conNetunoGo}
+        onNetunoGo={setConNetunoGo}
+        correoNetunoGo={correoNetunoGo}
+        onCorreoNetunoGo={(valor) => {
+          setCorreoNetunoGo(valor);
+          setValidacionCorreo('inicial');
+        }}
+        validacionCorreo={validacionCorreo}
+        onValidarCorreo={validarCorreo}
+        conSalud={conSalud}
+        onSalud={setConSalud}
+        titularSalud={{
+          nombre: nombreNuevo,
+          documento: titular.documento,
+          fecha: titular.fecha,
+          sexo: titular.sexo,
+        }}
+        beneficiarios={beneficiarios}
+        onAgregarBeneficiario={agregarBeneficiario}
+        onCambiarBeneficiario={cambiarBeneficiario}
+        onQuitarBeneficiario={quitarBeneficiario}
+        acordeon={acordeon(
+          'servicios',
+          [
+            `${elegidos.length} ${elegidos.length === 1 ? 'contrato' : 'contratos'}`,
+            opcionales.streaming && conNetunoGo && 'NetunoGo',
+            opcionales.salud && conSalud && `Salud + ${beneficiarios.length} beneficiario(s)`,
+          ]
+            .filter(Boolean)
+            .join(' · '),
+        )}
+      />
+      <DocumentosRequeridos
+        unidad={unidad}
+        documentos={documentosRequeridos}
+        archivos={archivos}
+        subiendo={subiendo}
+        onSubir={subir}
+        onQuitar={quitar}
+        acordeon={acordeon(
+          'documentos',
+          `${documentosRequeridos.filter((d) => archivos[d.id]).length} de ${documentosRequeridos.length} cargados`,
+        )}
+      />
+      <VistaPrevia
+        anterior={anterior}
+        nuevo={nuevo}
+        acciones={accionesPrevistas({
+          unidad,
+          documentos: documentosRequeridos.length,
+          correo: titular.correo,
+          nuevoTitular: nombreNuevo,
+          titularActual: nombreAnterior,
+          contratos: elegidos.length,
+          facturacion,
+        })}
+        enviando={enviando}
+        error={errorEnvio}
+        onEnviar={() => void enviar()}
+        acordeon={acordeon('vista')}
+      />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import {
   type Elegibilidad,
   type UnidadComercial,
 } from '../lib/cambioTitularidad';
-import { AlertaCargando, Bloque } from './Piezas';
+import { AlertaCargando, Bloque, type Acordeon } from './Piezas';
 
 export type EstadoSaldo = { estado: 'sin-verificar' } | { estado: 'verificando' } | Elegibilidad;
 
@@ -110,6 +110,7 @@ export function RegistroSolicitud({
   observaciones,
   onObservaciones,
   saldo,
+  acordeon,
 }: {
   unidad: UnidadComercial;
   contratos: ContratoTransferible[];
@@ -122,9 +123,15 @@ export function RegistroSolicitud({
   observaciones: string;
   onObservaciones: (valor: string) => void;
   saldo: EstadoSaldo;
+  acordeon?: Acordeon;
 }) {
   return (
-    <Bloque titulo="Registro de Solicitud" icono={FileText} insignia={unidad.toUpperCase()}>
+    <Bloque
+      titulo="Registro de Solicitud"
+      icono={FileText}
+      insignia={unidad.toUpperCase()}
+      acordeon={acordeon}
+    >
       <CampoFormulario etiqueta="Contratos a transferir" requerido ayuda={AYUDA_CONTRATOS[unidad]}>
         {contratos.length === 0 ? (
           <Alerta tono="aviso">La cuenta no tiene contratos que se puedan transferir.</Alerta>

@@ -13,7 +13,9 @@
   --color-netuno-link: #5dadf3;
   --color-netuno-oscuro: #0c1032;
   --color-accion: #1e96e0;
-  /* Cabeceras de formularios de gestión (Traslado de servicio: ts-* del widget jQuery) */
+  /* Administración de cuenta: barra superior, menú lateral y cabeceras de las secciones de cada gestión */
+  --color-gestion: #0b102b;
+  /* Tablas y botones con el estilo del Traslado de servicio (ts-* del widget jQuery) */
   --color-ts-cabecera: #1e2a4a;
   --color-ts-badge: #3b4560;
 

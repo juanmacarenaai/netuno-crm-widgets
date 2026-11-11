@@ -60,7 +60,7 @@ export function AdministrarCuenta({
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-fondo">
-      <header className="sticky top-0 z-20 flex flex-wrap items-center gap-3 bg-netuno-800 px-4 py-2.5 text-white shadow-md">
+      <header className="sticky top-0 z-20 flex flex-wrap items-center gap-3 border-b border-white/10 bg-gestion px-4 py-2.5 text-white shadow-md">
         <Boton variante="claro" tamano="sm" icono={ArrowLeft} onClick={onVolver}>
           Volver a las cuentas
         </Boton>
@@ -77,7 +77,7 @@ export function AdministrarCuenta({
 
       <div className="flex flex-1 flex-col md:flex-row">
         <nav
-          className="flex shrink-0 flex-row gap-1 overflow-x-auto bg-netuno-900 p-2 text-white md:w-60 md:flex-col md:p-3"
+          className="flex shrink-0 flex-row gap-1 overflow-x-auto bg-gestion p-2 text-white md:w-60 md:flex-col md:p-3"
           aria-label="Administración de cuenta"
         >
           {OPCIONES.map(({ id, etiqueta, icono, componente }) => (

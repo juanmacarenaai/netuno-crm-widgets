@@ -23,7 +23,7 @@ export function SeccionFormulario({
 }) {
   return (
     <section className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-tarjeta">
-      <header className="flex items-center justify-between bg-ts-cabecera px-5 py-3.5 text-white">
+      <header className="flex items-center justify-between bg-gestion px-5 py-3.5 text-white">
         <h3 className="flex items-center gap-2 text-[15px] font-bold">
           <Icono aria-hidden="true" className="h-4 w-4 text-netuno-500" />
           {titulo}
